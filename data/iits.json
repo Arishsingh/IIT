@@ -1,0 +1,799 @@
+{
+  "iits": [
+    {
+      "id": "iitb",
+      "name": "IIT Bombay",
+      "city": "Mumbai",
+      "aliases": [
+        "Bombay",
+        "Powai"
+      ],
+      "website": "https://www.iitb.ac.in",
+      "emailDomain": "iitb.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "iitb-cse",
+          "url": "https://www.cse.iitb.ac.in/people/faculty.php"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://www.ee.iitb.ac.in/people/faculty/",
+          "card": "div.rounded-lg:has(h3):has(a[href*='/people/faculty/'])",
+          "nameSel": "h3",
+          "research": "p",
+          "profile": "a[href*='/people/faculty/']@href",
+          "profiles": "always"
+        },
+        {
+          "id": "cminds",
+          "name": "Machine Intelligence & Data Science (C-MInDS)",
+          "scraper": "js-bundle",
+          "url": "https://www.minds.iitb.ac.in/faculty",
+          "script": "static/js/main\\.[a-f0-9]+\\.js",
+          "key": "faculty_research",
+          "fields": {
+            "name": "faculty_name",
+            "designation": "faculty_designation",
+            "research": "faculty_research",
+            "homepage": "faculty_url"
+          },
+          "note": "Centre members come from many departments; emails are filled in from their home department when it is also scraped.",
+          "profiles": false
+        }
+      ]
+    },
+    {
+      "id": "iitd",
+      "name": "IIT Delhi",
+      "city": "Delhi",
+      "aliases": [
+        "New Delhi",
+        "Hauz Khas"
+      ],
+      "website": "https://home.iitd.ac.in",
+      "emailDomain": "iitd.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://homecse.iitd.ac.in/faculty/",
+          "card": ".even-grid-item",
+          "nameSel": ".team-name",
+          "research": ".short-bio",
+          "homepage": ".tlp-website a@href",
+          "profile": ".team-name a@href",
+          "section": "^(Head of Department|Faculty)$",
+          "profiles": "always"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://ee.iitd.ac.in/faculty",
+          "card": ".team-details",
+          "nameSel": "h2 a",
+          "homepage": "a.btn@href",
+          "profile": "h2 a@href",
+          "profiles": false
+        },
+        {
+          "id": "scai",
+          "name": "Yardi School of Artificial Intelligence",
+          "scraper": "cards",
+          "url": "https://scai.iitd.ac.in/faculty",
+          "card": ".fac-modal",
+          "nameSel": "h3@own",
+          "research": ".research-areas ul",
+          "profiles": false
+        }
+      ]
+    },
+    {
+      "id": "iitm",
+      "name": "IIT Madras",
+      "city": "Chennai",
+      "aliases": [
+        "Madras"
+      ],
+      "website": "https://www.iitm.ac.in",
+      "emailDomain": "iitm.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://www.cse.iitm.ac.in/outerfaculty.php",
+          "card": ".fac-card",
+          "nameSel": "h3",
+          "research": "p.fac-no",
+          "exclude": "^Former\\b|Next Postion",
+          "profile": "a[href*='innerfaculty']@href",
+          "profiles": "always"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://www.ee.iitm.ac.in/people/",
+          "card": ".faculty-card",
+          "nameSel": ".faculty-name",
+          "homepage": ".faculty-name a@href",
+          "profiles": false
+        },
+        {
+          "id": "wsai",
+          "name": "Wadhwani School of Data Science & AI",
+          "scraper": "cards",
+          "url": "https://wsai.iitm.ac.in/faculty/",
+          "card": ".filter-item.category-core-faculty",
+          "nameSel": ".people-card__name",
+          "researchTags": "tag-",
+          "profile": "a.people-card@href",
+          "profiles": false,
+          "note": "WSAI profile pages only list the school office email; personal emails come from the professor's home department."
+        }
+      ]
+    },
+    {
+      "id": "iitk",
+      "name": "IIT Kanpur",
+      "city": "Kanpur",
+      "aliases": [],
+      "website": "https://www.iitk.ac.in",
+      "emailDomain": "iitk.ac.in",
+      "notes": "Uses the institute-wide faculty directory; each profile page has the official email.",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "iitk-directory",
+          "profileResearch": ".iitk__faculty--research-content",
+          "profiles": "always",
+          "url": "https://www.iitk.ac.in/iitk-faculty",
+          "group": "^Computer Science"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "iitk-directory",
+          "profileResearch": ".iitk__faculty--research-content",
+          "profiles": "always",
+          "url": "https://www.iitk.ac.in/iitk-faculty",
+          "group": "^Electrical Engineering"
+        },
+        {
+          "id": "dis",
+          "name": "Intelligent Systems / Wadhwani School of AI",
+          "scraper": "iitk-directory",
+          "profileResearch": ".iitk__faculty--research-content",
+          "profiles": "always",
+          "url": "https://www.iitk.ac.in/iitk-faculty",
+          "taxons": [
+            376,
+            377
+          ]
+        },
+        {
+          "id": "sds",
+          "name": "Statistics & Data Science",
+          "scraper": "iitk-directory",
+          "profileResearch": ".iitk__faculty--research-content",
+          "profiles": "always",
+          "url": "https://www.iitk.ac.in/iitk-faculty",
+          "group": "^Statistics and Data Science"
+        }
+      ]
+    },
+    {
+      "id": "iitjammu",
+      "name": "IIT Jammu",
+      "city": "Jammu",
+      "aliases": [
+        "Jagti"
+      ],
+      "website": "https://www.iitjammu.ac.in",
+      "emailDomain": "iitjammu.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "json-api",
+          "url": "https://www.iitjammu.ac.in/computer_science_engineering/faculty",
+          "api": "https://userlogin.iitjammu.ac.in/api/faculty/public",
+          "dataPath": "data",
+          "match": {
+            "department": "Computer Science",
+            "facultytype": "^(Regular|Inspire) Faculty$"
+          },
+          "fields": {
+            "name": "faculty_name",
+            "designation": "designation",
+            "email": "email",
+            "research": "researchinterest",
+            "homepage": "personalwebsite",
+            "profile": "faculty_url",
+            "teaching": "academicinterests"
+          },
+          "profileBase": "https://www.iitjammu.ac.in/faculty/",
+          "profiles": false
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "json-api",
+          "url": "https://www.iitjammu.ac.in/electrical_engineering/faculty",
+          "api": "https://userlogin.iitjammu.ac.in/api/faculty/public",
+          "dataPath": "data",
+          "match": {
+            "department": "Electrical Engineering",
+            "facultytype": "^(Regular|Inspire) Faculty$"
+          },
+          "fields": {
+            "name": "faculty_name",
+            "designation": "designation",
+            "email": "email",
+            "research": "researchinterest",
+            "homepage": "personalwebsite",
+            "profile": "faculty_url",
+            "teaching": "academicinterests"
+          },
+          "profileBase": "https://www.iitjammu.ac.in/faculty/",
+          "profiles": false
+        }
+      ]
+    },
+    {
+      "id": "iitr",
+      "name": "IIT Roorkee",
+      "city": "Roorkee",
+      "aliases": [],
+      "website": "https://iitr.ac.in",
+      "emailDomain": "iitr.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://iitr.ac.in/Departments/Computer%20Science%20and%20Engineering%20Department/People/Faculty/index.html",
+          "card": ".faculty-card",
+          "nameSel": ".name",
+          "research": ".description",
+          "profiles": false
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://iitr.ac.in/Departments/Electrical%20Engineering%20Department/People/Faculty/index.html",
+          "card": ".faculty-card",
+          "nameSel": ".name",
+          "research": ".description",
+          "profiles": false
+        }
+      ]
+    },
+    {
+      "id": "iitg",
+      "name": "IIT Guwahati",
+      "city": "Guwahati",
+      "aliases": [
+        "Gauhati",
+        "North Guwahati"
+      ],
+      "website": "https://www.iitg.ac.in",
+      "emailDomain": "iitg.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitg.ac.in/cse/CSE_FACULTY",
+          "card": ".service-item",
+          "nameSel": "h4",
+          "profiles": false
+        },
+        {
+          "id": "eee",
+          "name": "Electronics & Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitg.ac.in/eee/fetch.php",
+          "post": "query=",
+          "card": ".col-lg-12.p0",
+          "nameSel": "h5",
+          "profile": "a[href*='faculty_profile']@href",
+          "profiles": false,
+          "include": "Professor"
+        }
+      ]
+    },
+    {
+      "id": "iith",
+      "name": "IIT Hyderabad",
+      "city": "Hyderabad",
+      "aliases": [
+        "Sangareddy",
+        "Kandi",
+        "Secunderabad"
+      ],
+      "website": "https://www.iith.ac.in",
+      "emailDomain": "iith.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://cse.iith.ac.in/people/faculty.html",
+          "card": ".faculty-col",
+          "nameSel": "h3",
+          "research": "h5:last-of-type",
+          "homepage": "a.faculty-link@href",
+          "profiles": false
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://ee.iith.ac.in/People/Faculty.html",
+          "card": ".faculty-card",
+          "nameSel": ".faculty-name",
+          "research": ".faculty-interests",
+          "profiles": false
+        }
+      ]
+    },
+    {
+      "id": "iiti",
+      "name": "IIT Indore",
+      "city": "Indore",
+      "aliases": [
+        "Simrol"
+      ],
+      "website": "https://www.iiti.ac.in",
+      "emailDomain": "iiti.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://cse.iiti.ac.in/people/faculty",
+          "render": true,
+          "card": "div.rounded-2xl.shadow-xl",
+          "nameSel": "h2",
+          "profiles": false
+        }
+      ],
+      "notes": "The CSE site rejects non-browser requests, so it is loaded in a hidden browser window (works in the desktop app; the CLI needs puppeteer)."
+    },
+    {
+      "id": "iitbhu",
+      "name": "IIT (BHU) Varanasi",
+      "city": "Varanasi",
+      "aliases": [
+        "Banaras",
+        "Benares",
+        "Kashi",
+        "BHU"
+      ],
+      "website": "https://www.iitbhu.ac.in",
+      "emailDomain": "iitbhu.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitbhu.ac.in/dept/cse/faculty",
+          "card": ".profile-faculty-card",
+          "nameSel": "h5",
+          "profile": "h5 a@href",
+          "profiles": "missing"
+        },
+        {
+          "id": "eee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitbhu.ac.in/dept/eee/faculty",
+          "card": ".profile-faculty-card",
+          "nameSel": "h5",
+          "profile": "h5 a@href",
+          "profiles": "missing"
+        },
+        {
+          "id": "ece",
+          "name": "Electronics Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitbhu.ac.in/dept/ece/faculty",
+          "card": ".profile-faculty-card",
+          "nameSel": "h5",
+          "profile": "h5 a@href",
+          "profiles": "missing"
+        }
+      ]
+    },
+    {
+      "id": "iitism",
+      "name": "IIT (ISM) Dhanbad",
+      "city": "Dhanbad",
+      "aliases": [
+        "ISM"
+      ],
+      "website": "https://www.iitism.ac.in",
+      "emailDomain": "iitism.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitism.ac.in/all-faculty",
+          "card": ".event-box-campus",
+          "nameSel": "h3",
+          "include": "Computer Science and Engineering",
+          "research": false,
+          "profile": "a.view-more@href",
+          "profiles": "missing"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitism.ac.in/all-faculty",
+          "card": ".event-box-campus",
+          "nameSel": "h3",
+          "include": "^\\S.*?\\bElectrical Engineering",
+          "research": false,
+          "profile": "a.view-more@href",
+          "profiles": "missing"
+        },
+        {
+          "id": "ece",
+          "name": "Electronics Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitism.ac.in/all-faculty",
+          "card": ".event-box-campus",
+          "nameSel": "h3",
+          "include": "Electronics Engineering",
+          "research": false,
+          "profile": "a.view-more@href",
+          "profiles": "missing"
+        }
+      ],
+      "notes": "Uses the institute-wide faculty list, filtered by department; research areas come from profile pages."
+    },
+    {
+      "id": "iitrpr",
+      "name": "IIT Ropar",
+      "city": "Ropar",
+      "aliases": [
+        "Rupnagar"
+      ],
+      "website": "https://www.iitrpr.ac.in",
+      "emailDomain": "iitrpr.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "json-api",
+          "url": "https://cse.iitrpr.ac.in/faculty",
+          "api": "https://cse.iitrpr.ac.in/api/v1/faculty",
+          "match": {
+            "status": "^active$"
+          },
+          "fields": {
+            "name": "name",
+            "designation": "designation",
+            "email": "email",
+            "research": "research_interests"
+          },
+          "profiles": false
+        }
+      ],
+      "notes": "Only CSE publishes a machine-readable list; research interests are often blank in it."
+    },
+    {
+      "id": "iitbbs",
+      "name": "IIT Bhubaneswar",
+      "city": "Bhubaneswar",
+      "aliases": [
+        "Argul"
+      ],
+      "website": "https://www.iitbbs.ac.in",
+      "emailDomain": "iitbbs.ac.in",
+      "departments": [
+        {
+          "id": "secs",
+          "name": "Electrical & Computer Sciences",
+          "scraper": "cards",
+          "url": "https://www.iitbbs.ac.in/index.php/faculty-members/",
+          "card": "tr",
+          "nameSel": "td:nth-child(1)",
+          "include": "Electrical and Computer Sciences",
+          "email": "td:nth-child(5)",
+          "research": false,
+          "profile": "a@href",
+          "profiles": "missing"
+        }
+      ],
+      "notes": "Uses the institute-wide faculty table filtered to the School of Electrical & Computer Sciences. Research areas are not published in a scrapable form."
+    },
+    {
+      "id": "iitp",
+      "name": "IIT Patna",
+      "city": "Patna",
+      "aliases": [
+        "Bihta"
+      ],
+      "website": "https://www.iitp.ac.in",
+      "emailDomain": "iitp.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "next-data",
+          "url": "https://www.iitp.ac.in/departments/computer-science-engineering",
+          "fields": {
+            "name": "Name",
+            "designation": "Designation",
+            "email": "Email",
+            "research": "Research Areas",
+            "homepage": "Profile Link"
+          },
+          "profiles": false,
+          "dataPath": "facultyData.computer-science-engineering.en"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "next-data",
+          "url": "https://www.iitp.ac.in/departments/electrical-engineering",
+          "fields": {
+            "name": "Name",
+            "designation": "Designation",
+            "email": "Email",
+            "research": "Research Areas",
+            "homepage": "Profile Link"
+          },
+          "profiles": false,
+          "dataPath": "facultyData.electrical-engineering.en"
+        }
+      ]
+    },
+    {
+      "id": "iitmandi",
+      "name": "IIT Mandi",
+      "city": "Mandi",
+      "aliases": [
+        "Kamand"
+      ],
+      "website": "https://www.iitmandi.ac.in",
+      "emailDomain": "iitmandi.ac.in",
+      "departments": [
+        {
+          "id": "scee",
+          "name": "Computing & Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitmandi.ac.in/schools/SCEE",
+          "card": "tr",
+          "nameSel": "td:nth-child(1)",
+          "email": "td:nth-child(3)",
+          "research": false,
+          "profiles": false
+        }
+      ],
+      "notes": "The school page lists names and emails only; no research areas are published there."
+    },
+    {
+      "id": "iittp",
+      "name": "IIT Tirupati",
+      "city": "Tirupati",
+      "aliases": [
+        "Yerpedu"
+      ],
+      "website": "https://www.iittp.ac.in",
+      "emailDomain": "iittp.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "js-bundle",
+          "url": "https://www.iittp.ac.in/people/faculty/computer-science-engineering-department",
+          "script": "static/js/main\\.[a-f0-9]+\\.js",
+          "key": "AreasofInterest",
+          "arrayMatch": "learning|comput|algorithm|network|software|data|secur|graph|cloud|crypt|program",
+          "fields": {
+            "name": "Name",
+            "designation": "Position",
+            "email": "Email",
+            "research": "AreasofInterest"
+          },
+          "profiles": false,
+          "arrayMin": 8
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "js-bundle",
+          "url": "https://www.iittp.ac.in/people/faculty/electrical-engineering-department",
+          "script": "static/js/main\\.[a-f0-9]+\\.js",
+          "key": "AreasofInterest",
+          "arrayMatch": "power|signal|vlsi|circuit|communicat|antenna|control|electronic|wireless|image|semiconductor",
+          "fields": {
+            "name": "Name",
+            "designation": "Position",
+            "email": "Email",
+            "research": "AreasofInterest"
+          },
+          "profiles": false,
+          "arrayMin": 8
+        }
+      ]
+    },
+    {
+      "id": "iitpkd",
+      "name": "IIT Palakkad",
+      "city": "Palakkad",
+      "aliases": [
+        "Palghat"
+      ],
+      "website": "https://iitpkd.ac.in",
+      "emailDomain": "iitpkd.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://iitpkd.ac.in/cse",
+          "card": ".profile-list",
+          "nameSel": ".views-field-field-full-name",
+          "include": "Professor",
+          "research": false,
+          "profile": ".views-field-field-full-name a@href",
+          "profiles": "missing",
+          "profileResearch": ".views-field-field-re"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "https://ee.iitpkd.ac.in/faculty",
+          "render": true,
+          "card": ".card-shadow",
+          "nameSel": "h6",
+          "research": "p:nth-of-type(2)",
+          "profile": "h6 a@href",
+          "profiles": false
+        }
+      ],
+      "notes": "IIT Palakkad does not publish individual faculty emails on its website; use the profile/homepage links."
+    },
+    {
+      "id": "iitdh",
+      "name": "IIT Dharwad",
+      "city": "Dharwad",
+      "aliases": [
+        "Hubli",
+        "Hubballi"
+      ],
+      "website": "https://www.iitdh.ac.in",
+      "emailDomain": "iitdh.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitdh.ac.in/faculty",
+          "card": ".views-row",
+          "nameSel": ".title",
+          "include": "Computer Science and Engineering",
+          "email": ".field_email",
+          "research": false,
+          "profiles": false
+        },
+        {
+          "id": "eece",
+          "name": "Electrical, Electronics & Communication Engineering",
+          "scraper": "cards",
+          "url": "https://www.iitdh.ac.in/faculty",
+          "card": ".views-row",
+          "nameSel": ".title",
+          "include": "Electrical|Electronics",
+          "email": ".field_email",
+          "research": false,
+          "profiles": false
+        }
+      ],
+      "notes": "The faculty directory lists names, departments and emails, but not research areas."
+    },
+    {
+      "id": "iitgoa",
+      "name": "IIT Goa",
+      "city": "Goa",
+      "aliases": [
+        "Ponda",
+        "Panaji",
+        "Farmagudi"
+      ],
+      "website": "https://iitgoa.ac.in",
+      "emailDomain": "iitgoa.ac.in",
+      "departments": [
+        {
+          "id": "cse",
+          "name": "Computer Science & Engineering",
+          "scraper": "cards",
+          "url": "http://iitgoa.ac.in/facultyprofile/",
+          "card": "li.flex-item-profile",
+          "nameSel": "p",
+          "include": "Computer Science",
+          "research": "ul",
+          "profile": "a[href*='faculty-profile']@href",
+          "profiles": "missing"
+        },
+        {
+          "id": "ee",
+          "name": "Electrical Engineering",
+          "scraper": "cards",
+          "url": "http://iitgoa.ac.in/facultyprofile/",
+          "card": "li.flex-item-profile",
+          "nameSel": "p",
+          "include": "Electrical",
+          "research": "ul",
+          "profile": "a[href*='faculty-profile']@href",
+          "profiles": "missing"
+        }
+      ]
+    },
+    {
+      "id": "iitkgp",
+      "name": "IIT Kharagpur",
+      "city": "Kharagpur",
+      "aliases": [
+        "KGP"
+      ],
+      "website": "https://www.iitkgp.ac.in",
+      "emailDomain": "iitkgp.ac.in",
+      "departments": [],
+      "notes": "Not scraped: department faculty lists are loaded by JavaScript and the site frequently times out. Fallback: browse https://www.iitkgp.ac.in/department/CS (also EE, EC, AI) and open each faculty profile."
+    },
+    {
+      "id": "iitgn",
+      "name": "IIT Gandhinagar",
+      "city": "Gandhinagar",
+      "aliases": [
+        "Ahmedabad",
+        "Palaj"
+      ],
+      "website": "https://iitgn.ac.in",
+      "emailDomain": "iitgn.ac.in",
+      "departments": [],
+      "notes": "Not scraped: the faculty directory sits behind a Cloudflare bot challenge. Fallback: open https://iitgn.ac.in/faculty in a browser."
+    },
+    {
+      "id": "iitj",
+      "name": "IIT Jodhpur",
+      "city": "Jodhpur",
+      "aliases": [
+        "Karwar"
+      ],
+      "website": "https://www.iitj.ac.in",
+      "emailDomain": "iitj.ac.in",
+      "departments": [],
+      "notes": "Not scraped: the faculty directory is protected by bot detection and never renders for automated clients. Fallback: open https://www.iitj.ac.in/main/en/faculty-members in a browser."
+    },
+    {
+      "id": "iitbhilai",
+      "name": "IIT Bhilai",
+      "city": "Bhilai",
+      "aliases": [
+        "Durg",
+        "Raipur"
+      ],
+      "website": "https://www.iitbhilai.ac.in",
+      "emailDomain": "iitbhilai.ac.in",
+      "departments": [],
+      "notes": "Not scraped: no faculty list is published in a machine-readable form. Fallback: open https://www.iitbhilai.ac.in/index.php?pid=fac_faculty in a browser."
+    }
+  ]
+}

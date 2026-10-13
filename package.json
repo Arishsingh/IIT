@@ -1,0 +1,33 @@
+{
+  "name": "iit-professor-finder",
+  "version": "1.0.0",
+  "description": "Desktop app to find tech-department professors at IITs, with contact details for research internship outreach.",
+  "main": "electron/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "scrape": "node scripts/scrape.js",
+    "test": "node --test test/*.test.js",
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
+    "build": "vite build",
+    "start": "vite build && electron ."
+  },
+  "license": "MIT",
+  "dependencies": {
+    "acorn": "^8.19.0",
+    "acorn-walk": "^8.3.5",
+    "cheerio": "^1.2.0",
+    "nodemailer": "^6.10.1",
+    "papaparse": "^5.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "undici": "^7.30.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.5",
+    "cross-env": "^7.0.3",
+    "electron": "^37.10.3",
+    "vite": "^6.4.4",
+    "wait-on": "^8.0.5"
+  }
+}
